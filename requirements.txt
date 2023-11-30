@@ -7,5 +7,6 @@ jsonpointer==2.4
 jsonschema==4.19.0
 jsonschema-specifications==2023.7.1
 openai==0.27.4
+openpyxl==3.0.10
 pandas==1.5.3
 Werkzeug==3.0.1
