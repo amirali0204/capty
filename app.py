@@ -10,7 +10,7 @@ env= environ.Env()
 environ.Env.read_env()
 
 # OpenAI API key 
-openai.api_key = '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'
+openai.api_key = env("OPENAI_API_KEY")
 
 # initialize Flask App
 app = Flask(__name__)
