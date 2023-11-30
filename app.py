@@ -1,16 +1,17 @@
+import os
 import openai
 import pandas as pd
 
 from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 
-import environ
+# import environ
 
-env= environ.Env()
-environ.Env.read_env()
+# env= environ.Env()
+# environ.Env.read_env()
 
 # OpenAI API key 
-openai.api_key = env("OPENAI_API_KEY")
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # initialize Flask App
 app = Flask(__name__)
