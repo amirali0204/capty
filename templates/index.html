@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Content Generation</title>
+</head>
+<body>
+    <h1>Content Generation</h1>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="file">Choose an Excel file:</label>
+        <input type="file" id="file" name="file" accept=".xlsx">
+        <br>
+        <button type="submit">Upload and Generate</button>
+    </form>
+    <br>
+    {% if result_file %}
+        <h2>Results</h2>
+        <p>
+            {% for row in content %}
+                {{ row }}
+                <br>
+                <br>
+            {% endfor %}
+        </p>
+        <p style="font: bolder;">Download the results: <a href="{{ result_file }}" download>Download</a></p>
+    {% endif %}
+</body>
+</html>

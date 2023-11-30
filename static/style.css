@@ -1,0 +1,60 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    margin: 50px;
+}
+
+h1, h2 {
+    color: #8e44ad; /* Purple */
+}
+
+form {
+    display: inline-block;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+}
+
+input[type="file"] {
+    border: 2px solid #8e44ad; /* Purple */
+    border-radius: 10px;
+    padding: 8px;
+    background: transparent;
+    color: #8e44ad; /* Purple */
+}
+
+input[type="file"]:hover {
+    border: 2px solid #ffc0cb; /* Pink */
+}
+
+button {
+    border: 2px solid #8e44ad; /* Purple */
+    border-radius: 10px;
+    margin: 10px 10px 10px 0px;
+    padding: 10px 20px;
+    background: #8e44ad; /* Purple */
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    border: 2px solid #ffc0cb; /* Pink */
+    background: #ffc0cb; /* Pink */
+}
+
+p {
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+a {
+    color: #8e44ad; /* Purple */
+}
+
+a:hover {
+    color: #ffc0cb; /* Pink */
+}
