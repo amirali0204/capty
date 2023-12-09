@@ -29,7 +29,10 @@
                 <br>
             {% endfor %}
         </p>
-        <p style="font: bolder;">Download the results: <a href="{{ result_file }}" download>Download</a></p>
+        <!-- <p style="font: bolder;">Download the results: <a href="{{ result_file }}" download>Download</a></p> -->
+        <form method="GET" action="{{ url_for('static', filename='flask_output_file.xlsx') }}">
+            <input type="submit" value="Download">
+        </form>
     {% endif %}
 </body>
 </html>

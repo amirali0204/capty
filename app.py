@@ -69,7 +69,7 @@ def upload():
             df.at[index, 'Rewritten_Content'] = rewritten_content
 
         # Save the output Excel file
-        output_file_path = 'data/flask_output_file.xlsx'
+        output_file_path = 'static/flask_output_file.xlsx'
         df.to_excel(output_file_path, index=False)
 
         print(f"Script executed successfully. Results saved to {output_file_path}")
