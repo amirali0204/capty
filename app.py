@@ -64,6 +64,8 @@ def upload():
             # Rewrite combined content
             rewritten_content = rewrite_content_with_instructions(combined_content, row['Rewrite instructions'])
 
+            print(row['Rewrite instructions'])
+
             # Update DataFrame with combined and rewritten content
             df.at[index, 'Combined_Content'] = combined_content
             df.at[index, 'Rewritten_Content'] = rewritten_content
@@ -82,7 +84,7 @@ def ask_openai(prompt):
     response = openai.Completion.create(
         engine = "text-davinci-002",
         prompt = prompt,
-        max_tokens = 200
+        max_tokens = 2048
     )
     return response.choices[0].text.strip()
 
@@ -93,7 +95,7 @@ def rewrite_content_with_instructions(content, instructions):
         engine="text-davinci-003",
         prompt=prompt,
         temperature=0.7,
-        max_tokens=200
+        max_tokens=2048
     )
     
     return response.choices[0].text.strip()
@@ -101,72 +103,3 @@ def rewrite_content_with_instructions(content, instructions):
 if __name__ == '__main__':
     app.run(debug=True)
 
-
-
-
-# # ask openai for content generation
-# def ask_openai(prompt):
-#     response = openai.Completion.create(
-#         engine = "text-davinci-002",
-#         prompt = prompt,
-#         max_tokens = 200
-#     )
-#     return response.choices[0].text.strip()
-
-# def rewrite_content_with_instructions(content, instructions):
-#     prompt = f"Original Content: {content}\nInstructions: {instructions}\nRewrite:"
-    
-#     response = openai.Completion.create(
-#         engine="text-davinci-003",
-#         prompt=prompt,
-#         temperature=0.7,
-#         max_tokens=200
-#     )
-    
-#     return response.choices[0].text.strip()
-
-# # read the excel sheet with title and questions
-# # input_file_path = 'data/research_data.xlsx'
-# # df = pd.read_excel(input_file_path)
-
-# # Columns to store OpenAI results
-# for i in range(1, 21):
-#     question_col = f'Question {i}'
-#     answer_col = f'Answer {i}'
-#     df[answer_col] = ''
-
-# df['Combined_Content'] = ''
-# df['Rewritten_Content'] = ''
-
-
-# # Iterate through each row in the DataFrame
-# for index, row in df.iterrows():
-#     combined_results = []
-#     for i in range(1, 21):
-#         question_col = f'Question {i}'
-#         answer_col = f'Answer {i}'
-
-#         # Check if the question column is not empty
-#         if pd.notna(row[question_col]):
-#             question = row[question_col]
-#             result = ask_openai(question)
-#             combined_results.append(result)
-
-#             # Update DataFrame with the result
-#             df.at[index, answer_col] = result
-
-#     # Combine OpenAI results
-#     combined_content = ' '.join(combined_results)
-
-#     # Rewrite combined content
-#     rewritten_content = rewrite_content_with_instructions(combined_content, row['Rewrite instructions'])
-
-#     # Update DataFrame with combined and rewritten content
-#     df.at[index, 'Combined_Content'] = combined_content
-#     df.at[index, 'Rewritten_Content'] = rewritten_content
-
-# # Save the output Excel file
-# output_file_path = 'data/output_file.xlsx'
-# df.to_excel(output_file_path, index=False)
-
-# print(f"Script executed successfully. Results saved to {output_file_path}")
