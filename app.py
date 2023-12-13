@@ -84,7 +84,7 @@ def ask_openai(prompt):
     response = openai.Completion.create(
         engine = "text-davinci-002",
         prompt = prompt,
-        max_tokens = 2048
+        max_tokens = 1500
     )
     return response.choices[0].text.strip()
 
@@ -95,7 +95,7 @@ def rewrite_content_with_instructions(content, instructions):
         engine="text-davinci-003",
         prompt=prompt,
         temperature=0.7,
-        max_tokens=2048
+        max_tokens=1500
     )
     
     return response.choices[0].text.strip()
