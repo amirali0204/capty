@@ -88,11 +88,12 @@ def ask_openai(prompt):
     )
     return response.choices[0].text.strip()
 
+# ask openai to rewrite the combined generated content
 def rewrite_content_with_instructions(content, instructions):
     prompt = f"Original Content: {content}\nInstructions: {instructions}\nRewrite:"
     
     response = openai.Completion.create(
-        engine="text-davinci-003",
+        engine="text-davinci-002",
         prompt=prompt,
         temperature=0.7,
         max_tokens=1500
