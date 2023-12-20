@@ -83,7 +83,7 @@ def upload():
 def ask_openai(prompt):
     response = openai.Completion.create(
         engine = "text-davinci-002",
-        prompt = prompt,
+        prompt = f"Question: {prompt}\nInstructions: Give a response in 4 paragraphs or 1000 words and site references:",
         max_tokens = 1500
     )
     return response.choices[0].text.strip()
