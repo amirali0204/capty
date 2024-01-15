@@ -2,9 +2,10 @@ import openai
 import openpyxl
 from flask import Flask, render_template, request
 import pandas as pd
+import os
 
 # Set your OpenAI API key here
-openai.api_key = 'OPENAI_API_KEY'
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
 
