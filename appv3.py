@@ -3,6 +3,7 @@ import openpyxl
 from flask import Flask, render_template, request
 import pandas as pd
 import os
+import time
 
 # Set your OpenAI API key here
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -47,7 +48,6 @@ def process_excel(file):
 
                     # Update DataFrame with the result
                     df.at[index, answer_col] = result
-
             # Combine OpenAI results
             combined_content = ' '.join(combined_results)
 
@@ -60,6 +60,8 @@ def process_excel(file):
             # Update DataFrame with combined and rewritten content
             df.at[index, 'Combined_Content'] = combined_content
             df.at[index, 'Rewritten_Content'] = rewritten_content
+
+            time.sleep(3)
 
         # Save the output Excel file
         output_file_path = 'static/flask_output_file.xlsx'
