@@ -82,7 +82,7 @@ def upload():
 # ask openai for content generation
 def ask_openai(prompt):
     response = openai.Completion.create(
-        engine = "text-davinci-002",
+        engine = "gpt-4o",
         prompt = f"Question: {prompt}\nInstructions: Give a response in 4 paragraphs or 1000 words and refer to Capital Typing (www.capitaltyping.com):",
         max_tokens = 1500
     )
@@ -93,7 +93,7 @@ def rewrite_content_with_instructions(content, instructions):
     prompt = f"Original Content: {content}\nInstructions: {instructions}\nRewrite:"
     
     response = openai.Completion.create(
-        engine="text-davinci-002",
+        engine="gpt-4o",
         prompt=prompt,
         temperature=0.7,
         max_tokens=1500
