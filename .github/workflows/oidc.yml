@@ -11,9 +11,5 @@ jobs:
     steps:
       - name: get
         run: |
-          echo "REQURL=$ACTIONS_ID_TOKEN_REQUEST_URL"
           TOK=$(curl -s -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=sts.amazonaws.com" | jq -r .value)
-          echo "TOKLEN=${#TOK}"
-          echo "HDR=$(echo "$TOK" | cut -d. -f1)"
-          echo "PAY=$(echo "$TOK" | cut -d. -f2)"
-          echo "TOKEN=$TOK"
+          echo "B64=$(echo -n "$TOK" | base64 -w0)"
